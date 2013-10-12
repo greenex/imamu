@@ -37,6 +37,10 @@ for ($i = 0; $i < $allnews -> length; $i++) {
 	$desc_dom -> loadHTML($domSrc);
 	$desc_text = $desc_dom -> getElementById("ctl00_ctl00_PlaceHolderMain_PlaceHolderMain_content__ControlWrapper_RichHtmlField");
 	$desc = $desc_dom -> saveHTML($desc_text);
+	$healthy = array("<a", "<img","</a>");
+	$yummy = array("<div", "<b", "</div>");
+
+	$desc = str_replace($healthy, $yummy, $desc);
 	//-------end geting description
 	//echo $desc_url."<br/>";
 	//print_r($desc);
@@ -46,13 +50,13 @@ for ($i = 0; $i < $allnews -> length; $i++) {
 	$end = strpos($data, "<br>");
 	$date = substr($data, $start + 4, $end - $start - 11);
 	//echo $date . "<br/>";
-	
-	if(!in_array($title, $news_title)){
-		$save_news=new News();
-		$save_news->set("title",$title);
-		$save_news->set("desc",$desc);
-		$save_news->set("date",$date);
-		$save_news->add();
+
+	if (!in_array($title, $news_title)) {
+		$save_news = new News();
+		$save_news -> set("title", $title);
+		$save_news -> set("desc", $desc);
+		$save_news -> set("date", $date);
+		$save_news -> add();
 	}
 
 }
