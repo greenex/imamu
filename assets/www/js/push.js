@@ -1,4 +1,3 @@
-var server = "naemhd.webfactional.com/imamu/uni_system/saveGCM.php" ;
 var pushNotification;
             
             function onDeviceReady() {
@@ -71,14 +70,17 @@ var pushNotification;
 						// here is where you might want to send it the regID for later use.
 								
 						jQuery.ajax({
-									type : "POST",
-									url :"naemhd.webfactional.com/imamu/uni_system/saveGCM.php",
-									data : {
-										rid : e.regid,
-									}
-								}).done(function(msg) {
-											$("#app-status-ul").append('<li>xxxxx -> :'+msg +"</li>");
-								});
+							type : "POST",
+							url :"naemhd.webfactional.com/imamu/uni_system/saveGCM.php",
+							data : {
+								rid : e.regid,
+							},
+							error: function (request, status, error) {
+								alert(error);
+							    }
+						}).done(function(msg) {
+							$("#app-status-ul").append('<li>xxxxx -> :'+msg +"</li>");
+						});
 						console.log("regID = " + e.regid);
 //alert(e.regID);
 					}
