@@ -19,12 +19,13 @@
 		<script type="text/javascript" src="js/googleapi.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/map.js"></script>
 		<script>
-
 			//hostname = "localhost";
 			//hostname="10.0.2.2";
-			hostname="naemhd.webfactional.com";
+			hostname = "naemhd.webfactional.com";
 
 			function view_news() {
+				$("#allnews").empty();
+				$("#allnews").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;"><img src="images/loading.gif"  /></div>');
 
 				jQuery.ajax({
 					type : "POST",
@@ -32,11 +33,14 @@
 					data : {
 						ch_id : 1
 
+					},
+					error : function(request, status, error) {
+						$("#allnews").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;">لا يوجد اتصال إنترنت</div>');
+
 					}
 				}).done(function(msg) {
 					//alert(msg);
-					$("#allnews li").remove();
-
+					$("#allnews").empty();
 					//repopulate the list with data from phonegap's device api
 					$("#allnews").append($(msg));
 					//alert(msg);
@@ -45,21 +49,28 @@
 
 				});
 			}
-			
+
 			function view_news_desc(id) {
-			  	
+				$("#description").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;"><img src="images/loading.gif"  /></div>');
+
 				jQuery.ajax({
 					type : "POST",
 					url : "http://" + hostname + "/imamu/uni_system/view_news_desc.php",
 					data : {
 						news_id : id
 
+					},
+					error : function(request, status, error) {
+						$("#description").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;">لا يوجد اتصال إنترنت</div>');
 					}
 				}).done(function(msg) {
 					//alert(msg);
 					$("#description").empty();
-
+					$("#loadingbar").remove();
 					//repopulate the list with data from phonegap's device api
+
+					$("#description").empty();
+
 					$("#description").append($(msg));
 					//alert(msg);
 					$("#description").trigger('create');
@@ -67,40 +78,55 @@
 
 				});
 			}
-			
-			view_news();
+
 		</script>
 
 	</head>
 	<body>
 
 		<div id="home" data-role="page">
-	
-		<div id="app-status-div">
-			<ul id="app-status-ul">
-				<li>Cordova PushNotification Plugin Demo</li>
-			</ul>
-		</div>
+
+			<div id="app-status-div">
+				<ul id="app-status-ul">
+					<li>
+						Cordova PushNotification Plugin Demo
+					</li>
+				</ul>
+			</div>
 			<header data-role="header">
 				<h1>القائمة الرئيسية</h1>
-				
+
 			</header>
 			<div data-role="content">
 				<table width="100%" class="tablestyle">
 					<tr>
-						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/news.png" width="60"  /><br />الاخبار</a></td>
-						<td class="iconstyle"><a href="#show" onclick="showLocation();" class="linktag"><img src="icons/map.png" width="60" /><br />الخرائط</a></td>
-						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/ads.png" width="60"  /><br />الاعلانات</a></td>
+						<td class="iconstyle"><a href="#news" class="linktag" onclick="view_news();"><img src="icons/news.png" width="60"  />
+						<br />
+						الاخبار</a></td>
+						<td class="iconstyle"><a href="#show" onclick="showLocation();" class="linktag"><img src="icons/map.png" width="60" />
+						<br />
+						الخرائط</a></td>
+						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/ads.png" width="60"  />
+						<br />
+						الاعلانات</a></td>
 					</tr>
 					<tr>
-						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/cal.png" width="60"  /><br />التقويم الجامعي</a></td>
-						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/guide.png" width="60" /><br />الدليل</a></td>
-						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/links.png" width="60" /><br />الروابط</a></td>
+						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/cal.png" width="60"  />
+						<br />
+						التقويم الجامعي</a></td>
+						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/guide.png" width="60" />
+						<br />
+						الدليل</a></td>
+						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/links.png" width="60" />
+						<br />
+						الروابط</a></td>
 					</tr>
 					<tr>
-						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/service.png" width="60"  /><br />خدمات الطلاب </a></td>
+						<td class="iconstyle"><a href="#news" class="linktag"><img src="icons/service.png" width="60"  />
+						<br />
+						خدمات الطلاب </a></td>
 					</tr>
-					
+
 				</table>
 			</div>
 
@@ -112,14 +138,11 @@
 
 			</header>
 			<div data-role="content">
-				<ul data-role="listview"   data-filter="true" id='allnews'>
-
-				</ul>
+				<ul data-role="listview"   data-filter="true" id='allnews'></ul>
 			</div>
 
 		</div>
 
-		
 		<div id="newsdesc" data-role="page">
 			<header data-role="header">
 				<h1>الاخبار</h1>
@@ -128,20 +151,20 @@
 			</header>
 			<div data-role="content">
 				<p id="description">
-					
+
 				</p>
 			</div>
 		</div>
-		
-        <div data-role="page" id="show" class="page-map">
-            <div data-role="header" id="thehead" data-nobackbtn="true">
-            	<h1>طريق الجامعة</h1>
+
+		<div data-role="page" id="show" class="page-map">
+			<div data-role="header" id="thehead" data-nobackbtn="true">
+				<h1>طريق الجامعة</h1>
 				<a href="#home" data-icon="back" data-iconpos="notext">الاخبار</a>
-            </div>
-            <div data-role="content" id="the_map_container" style="padding:0"> 
-                <div id="map_canvas" style="width:100%; height:100%;"></div>
-            </div>
-        </div>
+			</div>
+			<div data-role="content" id="the_map_container" style="padding:0">
+				<div id="map_canvas" style="width:100%; height:100%;"></div>
+			</div>
+		</div>
 
 	</body>
 </html>
