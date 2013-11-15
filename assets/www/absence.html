@@ -24,18 +24,20 @@
 		<!-- Course prerequisitess -->
 		<div id='prereq' data-role="page">
 			<div data-role="header" id="thehead" data-nobackbtn="true">
-				<h1>Course prerequisitess</h1>
+				<h1>Absence Hours</h1>
 				<a  rel="external" href="services.html" data-icon="back" data-iconpos="notext">Main</a>
 			</div>
 			<select name="drop_1" id="drop_1" dir="ltr" class="tb5">
      			 <option value="" selected="selected" disabled="disabled">Select  Department</option>
-           		 <option value="cs">Computer Science</option>
-           		 <option value="cis">Information Systems</option>
-           		 <option value="sis">Information Studies</option>    
-    		</select>
+ 				 <option value="cs">Computer Science</option>
+         		 <option value="cis">Information Systems</option>
+         		 <option value="sis">Information Studies</option>
+   			</select>
     		<div id='select1'></div>
     		<div id='select2'></div>
-    		<div id='result' style="text-align: center;margin-top: 80px;">
+    		<div id='result' style="text-align: center;margin-top: 55px; ">
+    		</div>
+    		<div id='result2' >
     		</div>
 
 		</div>
@@ -45,7 +47,7 @@
 <script type="text/javascript" charset="utf-8" >
 		$('#drop_1').change(function(){
 	 $("#result").html('<div id="loadingbar" style="text-align: center;margin-top: 0px;"><img src="images/loading.gif"  /></div>');
-      $.get("http://ccisportal.com/func.php", {
+      $.get("http://ccisportal.com/funcabs.php", {
 		func: "drop_1",
 		drop_var: $('#drop_1').val() , 
       }, function(response){
@@ -56,7 +58,7 @@
 		
 		$('#drop_2').change(function(){
 			 $("#result").html('<div id="loadingbar" style="text-align: center;margin-top: 0px;"><img src="images/loading.gif"  /></div>');
-		      $.get("http://ccisportal.com/func.php", {
+		      $.get("http://ccisportal.com/funcabs.php", {
 				func: "drop_2",
 				drop_var: $('#drop_2').val()
 		      }, function(response2){
@@ -111,14 +113,15 @@
                                 }
                                 
                                 	
-							    $.post("http://ccisportal.com/coursereq.php", {
+							    $.post("http://ccisportal.com/absencehours.php", {
 										drop_1: $('#drop_1').val(),
 										drop_2: $('#drop_2').val(),
 										drop_3: $('#drop_3').val(),
-										submit:'Submit'
+										hoab  : $('hoab').val(),
+										submit:'Send'
 								      }, function(response){
 								    		  var test6 = new String(response);
-								      		  alert( test6.substring(test6.indexOf("<h3"), test6.indexOf("</h3")).replace('<h3 align="center">',''));
+								      		  $('#result2').html(test6.substring(test6.indexOf("<table"), test6.indexOf("</table")).replace('<a href="absencehours.php"> Back</a>','')+ "</table>");
 								      }).fail(function() {
 								      $("#result").html('');
 									    alert( "No Internet Connection" );
