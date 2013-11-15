@@ -47,3 +47,119 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
+	//hostname = "localhost";
+			//hostname="10.0.2.2";
+			hostname = "naemhd.webfactional.com";
+
+			function view_news() {
+				$("#allnews").empty();
+				$("#allnews").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;"><img src="images/loading.gif"  /></div>');
+
+				jQuery.ajax({
+					type : "POST",
+					url : "http://" + hostname + "/imamu/uni_system/view_news.php",
+					data : {
+						ch_id : 1
+
+					},
+					error : function(request, status, error) {
+						$("#allnews").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;">لا يوجد اتصال إنترنت</div>');
+
+					}
+				}).done(function(msg) {
+					//alert(msg);
+					$("#allnews").empty();
+					//repopulate the list with data from phonegap's device api
+					$("#allnews").append($(msg));
+					//alert(msg);
+					$("#allnews").trigger('create');
+					$("#allnews").listview('refresh');
+
+				});
+			}
+
+			function view_ads() {
+				$("#allads").empty();
+				$("#allads").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;"><img src="images/loading.gif"  /></div>');
+
+				jQuery.ajax({
+					type : "POST",
+					url : "http://" + hostname + "/imamu/uni_system/view_ads.php",
+					data : {
+						ch_id : 1
+
+					},
+					error : function(request, status, error) {
+						$("#allads").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;">لا يوجد اتصال إنترنت</div>');
+
+					}
+				}).done(function(msg) {
+					//alert(msg);
+					$("#allads").empty();
+					//repopulate the list with data from phonegap's device api
+					$("#allads").append($(msg));
+					//alert(msg);
+					$("#allads").trigger('create');
+					$("#allads").listview('refresh');
+
+				});
+			}
+
+			function view_ads_desc(id) {
+				$("#ads_desc").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;"><img src="images/loading.gif"  /></div>');
+
+				jQuery.ajax({
+					type : "POST",
+					url : "http://" + hostname + "/imamu/uni_system/view_ads_desc.php",
+					data : {
+						ads_id : id
+
+					},
+					error : function(request, status, error) {
+						$("#ads_desc").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;">لا يوجد اتصال إنترنت</div>');
+					}
+				}).done(function(msg) {
+					alert(msg);
+					$("#ads_desc").empty();
+					$("#loadingbar").remove();
+					//repopulate the list with data from phonegap's device api
+
+					$("#ads_desc").empty();
+
+					$("#ads_desc").append($(msg));
+					//alert(msg);
+					$("#ads_desc").trigger('create');
+
+				});
+			}
+
+			function view_news_desc(id) {
+				$("#description").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;"><img src="images/loading.gif"  /></div>');
+
+				jQuery.ajax({
+					type : "POST",
+					url : "http://" + hostname + "/imamu/uni_system/view_news_desc.php",
+					data : {
+						news_id : id
+
+					},
+					error : function(request, status, error) {
+						$("#description").html('<div id="loadingbar" style="text-align: center;margin-top: 150px;">لا يوجد اتصال إنترنت</div>');
+					}
+				}).done(function(msg) {
+					//alert(msg);
+					$("#description").empty();
+					$("#loadingbar").remove();
+					//repopulate the list with data from phonegap's device api
+
+					$("#description").empty();
+
+					$("#description").append($(msg));
+					//alert(msg);
+					$("#description").trigger('create');
+					$("#description").listview('refresh');
+
+				});
+			}
