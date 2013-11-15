@@ -51,12 +51,14 @@
 		.linktag{
 			
 			text-decoration:none;  
-			color: blue;
+		    
 			font-size:20px;
+			color: #FFFFFF;
 			
 		}
 		.iconstyle{
 			padding: 30px;
+			
 		}
 		.tablestyle{
 			
