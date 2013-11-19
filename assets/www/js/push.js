@@ -71,12 +71,12 @@ var pushNotification;
 								
 						jQuery.ajax({
 							type : "POST",
-							url :"naemhd.webfactional.com/imamu/uni_system/saveGCM.php",
+							url :"http://naemhd.webfactional.com/imamu/uni_system/saveGCM.php",
 							data : {
 								rid : e.regid,
 							},
 							error: function (request, status, error) {
-								alert(error);
+								//alert('asdasdasddddddddddd   '+error);
 							    }
 						}).done(function(msg) {
 							$("#app-status-ul").append('<li>xxxxx -> :'+msg +"</li>");
