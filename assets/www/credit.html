@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>IMAMU</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone-no">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, height=device-height">
+		<!--<link rel="stylesheet" href="rtl.jquery.mobile-1.3.0.min.css" />-->
+		<link rel="stylesheet"  href="css/jquery.mobile-1.3.2.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<!--<script src="rtl.jquery.mobile-1.3.0.min.js"></script>-->
+		 <script src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+		<script src="js/jquery.screwdefaultbuttonsV2.js"></script>
+		<style>
+			table {
+				width: 100%
+			}
+			tbody > tr > td {
+				width: 1%
+			}
+			tr {
+				height: 70px;
+			}
+			input[type='checkbox'] {
+				width: 50px;
+				height: 50px;
+			}
+
+		</style>
+		<script>
+			var store = window.localStorage;
+			function submitData1() {
+				$("#result").html('<div id="loadingbar" style="text-align: center;margin-top: 0px;"><img src="images/loading.gif"  /></div>');
+
+				request = {
+					url : 'http://ccisportal.com/login.php?t=2',
+					type : "POST",
+					//dataType: 'json',
+					data : {
+						studentid : '430005462',
+						pass : '220220',
+						lsubmit : 'Login'
+					},
+					cache : false,
+					headers : {
+						Cookie : store.getItem('session')
+					},
+					complete : function(jqXHR, status) {
+						if (status != 'success') {
+							console.log('ajax status: failure');
+						} else if (store.getItem('session') != null) {
+							console.log('ajax status: session exists');
+						} else {
+							console.log('ajax status: saving cookie');
+							var header = jqXHR.getAllResponseHeaders();
+							var match = header.match(/(Set-Cookie|set-cookie): (.+?);/);
+							if (match) {
+								session = match[2];
+								store.setItem("session", session);
+							}
+							$("#result").html('<div id="loadingbar" style="text-align: center;margin-top: 0px;"><img src="images/loading.gif"  /></div>');
+							$.post("http://ccisportal.com/hoursleft.php?t=2", {
+								dep1 : $('#drop_1').val(),
+								submit : 'Submit'
+							}, function(response) {
+								var test6 = new String(response);
+								var data = test6.substring(test6.indexOf("<table"), test6.indexOf("</table")).replace('<a href="hoursleft.php">Back</a>', '').replace('<input type=\'submit\' name="submit" value="send">', '');
+								$('#result1').html(data + "</table>").trigger("create");
+								$.mobile.changePage("#prereq2", {
+									transition : "slideup",
+									changeHash : false
+								});
+								$('#result1 table').attr('width', '');
+								// alert( test6.substring(test6.indexOf("<h3"), test6.indexOf("</h3")).replace('<h3 align="center">',''));
+								$('input:checkbox').screwDefaultButtons({
+									image : 'url("images/checkboxSmall.jpg")',
+									width : 43,
+									height : 43
+								});
+								$("#result").html('');
+							}).fail(function() {
+								$("#result").html('');
+								alert("No Internet Connection");
+							});
+
+						}
+					},
+					success : function(response) {
+						$("#result").html('');
+						if ( typeof response != 'object') {
+							console.log('ajax status: no response object');
+							return;
+						} else {
+							console.log('ajax status: responding with object');
+							// Do response actions here...
+						}
+					}
+				}
+				
+				$.ajax(request).fail(function() {
+					$("#result").html('');
+					alert("No Internet Connection");
+				});
+				
+
+			}
+
+			function submitData2() {
+				
+				var ids = new Array();
+
+				$('input:checked').each(function() {
+					ids.push( $(this).val());
+				});
+		
+				if (!ids.length) {
+					alert('You have to choose courses');
+					return false;
+				}
+				
+				$("#loader1").html('<div id="loadingbar" style="text-align: center;margin-top: 0px;"><img src="images/loading.gif"  /></div>');
+
+				
+				request = {
+					url : 'http://ccisportal.com/login.php?t=2',
+					type : "POST",
+					//dataType: 'json',
+					data : {
+						studentid : '430005462',
+						pass : '220220',
+						lsubmit : 'Login'
+					},
+					cache : false,
+					headers : {
+						Cookie : store.getItem('session')
+					},
+					complete : function(jqXHR, status) {
+						
+						if (status != 'success') {
+							console.log('ajax status: failure');
+						} else if (store.getItem('session') != null) {
+							console.log('ajax status: session exists');
+						} else {
+							console.log('ajax status: saving cookie');
+							var header = jqXHR.getAllResponseHeaders();
+							var match = header.match(/(Set-Cookie|set-cookie): (.+?);/);
+							if (match) {
+								session = match[2];
+								store.setItem("session", session);
+							}
+							$("#loader1").html('<div id="loadingbar" style="text-align: center;margin-top: 0px;"><img src="images/loading.gif"  /></div>');
+							$.post("http://ccisportal.com/hoursleft.php?t=3", {
+								sum1   : ids,
+								allho  : $( "input[name='allho']" ).val(),
+								dep123 : $( "input[name='dep123']" ).val(),
+								submit : 'send'
+							}, function(response) {
+								var test6 = new String(response);
+								var data = test6.substring(test6.indexOf("<table"), test6.indexOf("</table")).replace('<a href="hoursleft.php"> Back</a>', '').replace('<input type=\'submit\' name="submit" value="send">', '');
+								$('#result2').html(data + "</table>").trigger("create");
+								$.mobile.changePage("#prereq3", {
+									transition : "slideup",
+									changeHash : false
+								});
+								$('#result1 table').attr('width', '');
+								// alert( test6.substring(test6.indexOf("<h3"), test6.indexOf("</h3")).replace('<h3 align="center">',''));
+								$('input:checkbox').screwDefaultButtons({
+									image : 'url("images/checkboxSmall.jpg")',
+									width : 43,
+									height : 43
+								});
+								$("#loader1").html('');
+							}).fail(function() {
+								$("#loader1").html('');
+								alert("No Internet Connection");
+							});
+
+						}
+					},
+					success : function(response) {
+						$("#loader1").html('');
+						if ( typeof response != 'object') {
+							console.log('ajax status: no response object');
+							return;
+						} else {
+							console.log('ajax status: responding with object');
+							// Do response actions here...
+						}
+					}
+				}
+				$.ajax(request).fail(function() {
+					$("#loader1").html('');
+					alert("No Internet Connection");
+				});
+				;
+			}
+		</script>
+	</head>
+	<body>
+		<div id='prereq1' data-role="page">
+			<div data-role="header" id="thehead" data-nobackbtn="true">
+				<h1>Hours Lefts</h1>
+				<a  rel="external" href="services.html" data-icon="back" >Back</a>
+			</div>
+			<select name="dep1" id="drop_1" dir="ltr" class="tb5">
+           		 <option value="cs">Computer Science</option>
+           		 <option value="cis">Information Systems</option>
+           		 <option value="sis">Information Studies</option>    
+    		</select>
+    		<input type="button" name='submit' value="send" onClick="submitData1();" />
+    		
+    		<div id='result' style="text-align: center;margin-top: 80px;">
+    		</div>
+
+		</div>
+		
+		
+		<div id='prereq2' data-role="page">
+			<div data-role="header" id="thehead" data-nobackbtn="true">
+				<h1>Hours Lefts</h1>
+				<a  rel="external" href="services.html" data-icon="back" >Back</a>
+			</div>
+    		
+    		
+    		<div id='result1' data-role="fieldcontain">
+    		</div>
+    		<div id='loader1' style="text-align: center;margin-top: -2px;">
+    		</div>
+    		<input type="button" id="submit1" value="submit" onclick="submitData2();" />
+
+		</div>
+		
+		<div id='prereq3' data-role="page">
+			<div data-role="header" id="thehead" data-nobackbtn="true">
+				<h1>Hours Lefts</h1>
+				<a  rel="external" href="services.html" data-icon="back" >Back</a>
+			</div>
+    		
+    		
+    		<div id='result2' data-role="fieldcontain">
+    		</div>
+    		<input type="button" id="submit1" value="Back" onclick='$.mobile.changePage("#prereq1", {transition : "slideup",changeHash : false});' />
+
+		</div>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
