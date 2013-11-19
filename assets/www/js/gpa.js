@@ -3,7 +3,7 @@ function view_form() {
 	var courses = $("#course").val();
 	var coursehtml = '<table width="100%"><tr><th>Subject grade</th><th>Hours number</th></tr>';
 
-	if (courses != '0' || isNaN($("#noh").val()) || isNaN($("#lastgpa").val())) {
+	if (courses != '0' && !isNaN($("#noh").val()) && !isNaN($("#lastgpa").val())) {
 		for (var i = 1; i <= courses; i++) {
 			coursehtml += '<tr><td><select id="grade' + i + '"><option value="5">A+</option><option value="4.75">A</option><option value="4.5">B+</option><option value="4">B</option><option value="3.5">C+</option><option value="3">C</option><option value="2.5">D+</option><option value="2">D</option><option value="1">F</option></select></td><td><select id="hours' + i + '"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="17">19</option><option value="18">20</option></select></td></tr>';
 		}
