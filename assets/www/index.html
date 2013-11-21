@@ -20,7 +20,9 @@
 		<script type="text/javascript" charset="utf-8" src="js/push.js"></script>
 		<script type="text/javascript" src="js/googleapi.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/map.js"></script>
-		<script></script>
+		<script>
+			document.addEventListener("deviceready", onDeviceReady, false);
+		</script>
 		<style>
 			#home {
 				background-image: url('images/bg.jpg');
@@ -49,7 +51,7 @@
 						<td class="iconstyle"><a href="#news" class="linktag" onclick="view_news();"><img src="icons/news.png" width="60"  />
 						<br />
 						News</a></td>
-						<td class="iconstyle"><a href="#show"  onclick="showLocation();" class="linktag"><img src="icons/map.png" width="60" />
+						<td class="iconstyle"><a rel="external" href="map.html"   class="linktag"><img src="icons/map.png" width="60" />
 						<br />
 						Map</a></td>
 						<td class="iconstyle"><a href="#ads" onclick="view_ads();" class="linktag"><img src="icons/ads.png" width="60"  />
@@ -80,7 +82,7 @@
 		<div id="news" data-role="page">
 			<header data-role="header">
 				<h1>News</h1>
-				<a href="#home" data-icon="back" data-iconpos="notext">News</a>
+				<a href="#home" data-icon="back" >Back</a>
 
 			</header>
 			<div data-role="content">
@@ -92,7 +94,7 @@
 		<div id="newsdesc" data-role="page">
 			<header data-role="header">
 				<h1>News</h1>
-				<a href="#news" data-icon="back" data-iconpos="notext">News</a>
+				<a href="#news" data-icon="back" >Back</a>
 
 			</header>
 			<div data-role="content">
@@ -105,7 +107,7 @@
 		<div id="ads" data-role="page">
 			<header data-role="header">
 				<h1>Ads</h1>
-				<a href="#home" data-icon="back" data-iconpos="notext">Home</a>
+				<a href="#home" data-icon="back">Back</a>
 
 			</header>
 			<div data-role="content">
@@ -117,7 +119,7 @@
 		<div id="adsdesc" data-role="page">
 			<header data-role="header">
 				<h1>Ads</h1>
-				<a href="#ads" data-icon="back" data-iconpos="notext">Ads</a>
+				<a href="#ads" data-icon="back" >Back</a>
 
 			</header>
 			<div data-role="content">
@@ -130,7 +132,7 @@
 		<div id="links" data-role="page">
 			<header data-role="header">
 				<h1>Links</h1>
-				<a href="#home" data-icon="back" data-iconpos="notext">Ads</a>
+				<a href="#home" data-icon="back" >Back</a>
 
 			</header>
 			<div data-role="content" style="text-align: center;margin-top: 20px;">
@@ -144,7 +146,7 @@
 		<div data-role="page" id="show" class="page-map">
 			<div data-role="header" id="thehead" data-nobackbtn="true">
 				<h1>University Road</h1>
-				<a href="#home" data-icon="back" data-iconpos="notext">Main</a>
+				<a href="#home" data-icon="back" >Back</a>
 			</div>
 			<div data-role="content" id="the_map_container" style="padding:0">
 				<div id="map_canvas" style="width:100%; height:100%;"></div>
