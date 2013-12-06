@@ -7,11 +7,8 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta charset="UTF-8">
 		<meta name="format-detection" content="telephone-no">
-		<!--
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, height=device-height, ">
-		-->
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
- 
+		<meta name="viewport" content="user-scalable=no, initial-scale=0.75, maximum-scale=1, minimum-scale=0.75, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+
 		<!--<link rel="stylesheet" href="rtl.jquery.mobile-1.3.0.min.css" />-->
 		<link rel="stylesheet"  href="css/jquery.mobile-1.3.2.min.css">
 		<link rel="stylesheet" href="css/index.css" />
@@ -28,9 +25,10 @@
 
 		<div id='guide' data-role="page">
 			<div data-role="header" id="thehead" data-nobackbtn="true">
-				<h1>Guide</h1>
-				<a  rel="external" href="index.html" data-icon="back" >Back</a>
-
+				<header data-role="header">
+					<h1>Directory</h1>
+					<a  rel="external" href="menu.html" data-icon="back" >Back</a>
+				</header>
 				<ul data-role="listview">
 					<li>
 						<a href="#ismale" >IS Male</a>
@@ -55,67 +53,53 @@
 
 			</header>
 			<div data-role="content">
-				<table border="1" name="IS Male" width="100%" style="text-align: center;">
-					<thead>
-						<th>Name</th>
-						<th>Office number/phone</th>
-						<th>Email</th>
-					</thead>
-					<tr>
-						<td>د.مطلق بن بدر العتيبي</td>
-						<td>FR16/012581875</td>
-						<td>motaibi@imamu.edu.sa </td>
-					</tr>
-
-					<tr>
-						<td>د.عبدالله بن عبدالعزيز التميم</td>
-						<td>FR22</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.صالح بن غرم الله الزهراني</td>
-						<td>FR88/012581871</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.محمد يوسف مسعودي</td>
-						<td>FR86/012581911</td>
-						<td>mmessaoudi@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.خالد بن محمد صويص</td>
-						<td>fr76/012581273</td>
-						<td>kmsuwais@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.عبدالقادر الجيلاني</td>
-						<td>FR075/</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>أ.سامر حسان العطاونة</td>
-						<td>FR80/012581836</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.بدر بن ناصر بن دخيل </td>
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>أ.قصي عبدالقادر أبودية</td>
-						<td>FR67/012581886</td>
-						<td></td>
-					</tr>
-
-				</table>
+				<ul data-role="listview" data-filter="true">
+					<li>
+						<a href="#ismale"> د.مطلق بن بدر العتيبي
+						<br />
+						motaibi@imamu.edu.sa <br /> FR16/012581875 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.عبدالله بن عبدالعزيز التميم
+						<br />
+						FR22</a>
+					</li>
+					<li>
+						<a href="#ismale">د.صالح بن غرم الله الزهراني
+						<br />
+						FR88/012581871 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد يوسف مسعودي
+						<br />
+						mmessaoudi@imamu.edu.sa <br /> FR86/012581911 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.خالد بن محمد صويص
+						<br />
+						kmsuwais@imamu.edu.sa <br /> fr76/012581273 </a>
+					</li>
+					<li>
+						<a href="#ismale"> د.عبدالقادر الجيلاني
+						<br />
+						FR075 </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.سامر حسان العطاونة
+						<br />
+						FR80/012581836 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.بدر بن ناصر بن دخيل
+						<br />
+						</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.قصي عبدالقادر أبودي
+						<br />
+						FR67/012581886 </a>
+					</li>
+				</ul>
 
 			</div>
 
@@ -127,105 +111,84 @@
 
 			</header>
 			<div data-role="content">
-				<table border ="1"  width="100%" style="text-align: center;">
 
-					<thead>
-						<th>Name</th>
-						<th>Office number/phone</th>
-						<th>Email</th>
-					</thead>
-
-					<tr>
-						<td>د.هبه خالد حسن محمد </td>
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>أ.هلا عبدالله حمد الرميح</td>
-						<td></td>
-						<td>hala.alrumaih@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.عبير عبدالعزيز عبد الله السند</td>
-						<td></td>
-						<td>Abeer.AlSanad@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.منى عواد الخطابي</td>
-						<td></td>
-						<td>monaalkhattabi@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.أريج عادل القواقنة</td>
-						<td></td>
-						<td>areej@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.نهى الشقيران</td>
-						<td></td>
-						<td>nuha_alshuqayran@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.موضي ال الشيخ</td>
-						<td></td>
-						<td>modhi@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.الخنساء أبو هاشم</td>
-						<td></td>
-						<td>Alkhansaa@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.غادة عبد الرحمن فريد</td>
-						<td></td>
-						<td>ghadafarid@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.نجلاء الحسون</td>
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>أ.شقفتا اقبال</td>
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>أ.أروى الصافي</td>
-						<td></td>
-						<td>aralsafi@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.هيفاء الحسيني</td>
-						<td></td>
-						<td>haifa.alhussaini@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.حنان الوادي</td>
-						<td></td>
-						<td>hanan_alwadi@ccis.imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.الاء منشاوي</td>
-						<td></td>
-						<td>Alaa_Menshawi@ccis.imamu.edu.sa</td>
-					</tr>
-
-				</table>
+				<ul data-role="listview" data-filter="true">
+					<li>
+						<a href="#ismale">د.هبه خالد حسن محمد
+						<br />
+						</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.هلا عبدالله حمد الرميح
+						<br />
+						hala.alrumaih@ccis.imamu.edu.sa</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.عبير عبدالعزيز عبد الله السند
+						<br />
+						Abeer.AlSanad@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">د.منى عواد الخطابي
+						<br />
+						monaalkhattabi@ccis.imamu.edu.sa</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.أريج عادل القواقنة
+						<br />
+						areej@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale"> أ.نهى الشقيران
+						<br />
+						nuha_alshuqayran@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.موضي ال الشيخ
+						<br />
+						modhi@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.الخنساء أبو هاشم
+						<br />
+						Alkhansaa@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.غادة عبد الرحمن فريد
+						<br />
+						ghadafarid@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.نجلاء الحسون
+						<br />
+						</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.شقفتا اقبال
+						<br />
+						</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.أروى الصافي
+						<br />
+						aralsafi@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.هيفاء الحسيني
+						<br />
+						haifa.alhussaini@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.حنان الوادي
+						<br />
+						hanan_alwadi@ccis.imamu.edu.sa </a>
+					</li>
+					<li>
+						<a href="#ismale">أ.الاء منشاوي
+						<br />
+						Alaa_Menshawi@ccis.imamu.edu.sa </a>
+					</li>
+				</ul>
 
 			</div>
 
@@ -237,236 +200,189 @@
 
 			</header>
 			<div data-role="content">
-				<table border ="1"   width="100%" style="text-align: center;">
 
-					<thead>
-						<th>Name</th>
-						<th>Office number/phone</th>
-						<th>Email</th>
-					</thead>
-
-					<tr>
-						<td>د.عيسى بن عبدالله العيسى</td>
-						<td>FR192/ 012581616</td>
-						<td>aleisa@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.سعد بن حمد العباد</td>
-						<td>FRXXX/ 012581871</td>
-						<td>salabbad@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.محمد بن عبدالرحمن العويرضي</td>
-						<td>FR092/ 012581186</td>
-						<td>mawairdhi@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.وليد بن عبدالعزيز الجندل</td>
-						<td>FR097/ 012581888</td>
-						<td>wajandal@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.د.هاشمي بن أحمد بن صالح بن ناصر</td>
-						<td>FR132/ 012586731</td>
-						<td>hamnasser@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.زهير عبدالمجيد زميرلي</td>
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.محمد العربي بودهير</td>
-						<td>FR65/ 012582137</td>
-						<td>mhelarbi@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.خالد بن عبدالعزيز الشلفان</td>
-						<td>FRXXX/ 012581XXX</td>
-						<td>kashalfan@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.محمد بن نداء العنزي</td>
-						<td>FR040/ ،FR040</td>
-						<td>alanazi@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.عماد بن عبدالرحمن الصغير</td>
-						<td>FRxx/ 01258xxxx</td>
-						<td>imadas@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.ليث بن عبدالعزيز السليمان</td>
-						<td>FRxxx/ 01258xxxx</td>
-						<td>laith@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.أحمد ميلود خرصي</td>
-						<td>FR2095/ 012586719</td>
-						<td>amakhorsi@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.أنيس قوبعه</td>
-						<td>FR66/012581921</td>
-						<td>amkoubaa@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.وسام بن خليفة بن فرج</td>
-						<td>FR035/ 012581959</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.اسماعيل بن محمد بختي</td>
-						<td>FR100/012581574</td>
-						<td>sbekhti@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.نجم الدين طقوق</td>
-						<td>FRxxx/012581957</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.ذكير حسين أحمد</td>
-						<td>FR055/012582172</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.عامر بن صفية</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.أحمد بياباني</td>
-						<td>FRxxx/012586729</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.علي السباعي</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.محمد الخالقي</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.المحسن رواشد</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د. أمجد رحمان خان</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.بدر بن محمد البشر</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.حبيب الله هارون</td>
-						<td>FRxxx/ 012586726</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.حسن المبروك الصلاي</td>
-						<td>FRxxx/ 012581922</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.رافع خلف العاصم</td>
-						<td>FR021/ 01258xxxx</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>د.يحيى الحاج</td>
-						<td>FR140/ 012582140</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.ميلاد محمد التزغدانتي</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.محمد فؤاد سريتي</td>
-						<td>FRxxx/01258xxxx</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.شفيق شودري</td>
-						<td>FRxxx/ 012586728</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.فتحي الجراي</td>
-						<td>FR096/ 012581029</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>د.عادل بن الحبيب عمار</td>
-						<td>SR061/ 012586713</td>
-						<td>ahammar@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>د.محمد بن أحمد بن عون الله</td>
-						<td>FRxxx/ 012586708</td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>أ.حبيب محمد فله</td>
-						<td>FR126/ 012567125</td>
-						<td>hvvulla@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>أ.مراد بوزقرة</td>
-						<td>FR054/ 012581910</td>
-						<td>mmsbouzegza@imamu.edu.sa</td>
-					</tr>
-
-					<tr>
-						<td>كمران إقبال</td>
-						<td>FRxxx/01258xxxx</td>
-						<td>kamraniqbal@ccis.imamu.edu.sa</td>
-					</tr>
-
-				</table>
+				<ul data-role="listview" data-filter="true">
+					<li>
+						<a href="#ismale">د.عيسى بن عبدالله العيسى
+						<br />
+						aleisa@imamu.edu.sa <br /> FR192/ 012581616 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.سعد بن حمد العباد
+						<br />
+						salabbad@imamu.edu.sa <br /> FRXXX/ 012581871</a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد بن عبدالرحمن العويرضي
+						<br />
+						mawairdhi@imamu.edu.s <br /> FR092/ 012581186 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.وليد بن عبدالعزيز الجندل
+						<br />
+						wajandal@imamu.edu.sa <br /> FR097/ 012581888 </a>
+					</li>
+					<li>
+						<a href="#ismale">أد.زهير عبدالمجيد زميرلي
+						<br />
+						</a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد العربي بودهير
+						<br />
+						mhelarbi@imamu.edu.sa <br /> FR65/ 012582137 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.خالد بن عبدالعزيز الشلفان
+						<br />
+						kashalfan@imamu.edu.sa <br /> FRXXX/ 012581XXX7 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد بن نداء العنزي
+						<br />
+						alanazi@imamu.edu.sa <br /> FR040/ ،FR040 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.عماد بن عبدالرحمن الصغير
+						<br />
+						imadas@imamu.edu.sa <br /> FRxx/ 01258xxxx </a>
+					</li>
+					<li>
+						<a href="#ismale">د.ليث بن عبدالعزيز السليمان
+						<br />
+						laith@imamu.edu.sa <br /> FRxxx/ 01258xxxx </a>
+					</li>
+					<li>
+						<a href="#ismale">د.أحمد ميلود خرصي
+						<br />
+						amakhorsi@imamu.edu.sa <br /> FR2095/ 012586719 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.أنيس قوبعه
+						<br />
+						amkoubaa@imamu.edu.sa <br /> FR66/012581921 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.وسام بن خليفة بن فرج
+						<br />
+						FR035/ 012581959 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.اسماعيل بن محمد بختي
+						<br />
+						sbekhti@imamu.edu.sa <br /> FR100/012581574 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.نجم الدين طقوق
+						<br />
+						FRxxx/012581957 </a>
+					</li>
+					<li>
+						<a href="#ismale">د.ذكير حسين أحمد
+						<br />
+						FR055/012582172</a>
+					</li>
+					<li>
+						<a href="#ismale">د.عامر بن صفية
+						<br />
+						FRxxx/01258xxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.أحمد بياباني
+						<br />
+						FRxxx/012586729</a>
+					</li>
+					<li>
+						<a href="#ismale">د.علي السباعي
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد الخالقي
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.المحسن رواشد
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د. أمجد رحمان خان
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.بدر بن محمد البشر
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.حبيب الله هارون
+						<br />
+						FRxxx/ 012586726x</a>
+					</li>
+					<li>
+						<a href="#ismale">دد.حسن المبروك الصلاي
+						<br />
+						FRxxx/ 012581922</a>
+					</li>
+					<li>
+						<a href="#ismale">د.رافع خلف العاصم
+						<br />
+						FR021/ 01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.يحيى الحاج
+						<br />
+						FR140/ 012582140</a>
+					</li>
+					<li>
+						<a href="#ismale">د.ميلاد محمد التزغدانتي
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد فؤاد سريتي
+						<br />
+						FRxxx/01258xxxx</a>
+					</li>
+					<li>
+						<a href="#ismale">د.شفيق شودري
+						<br />
+						FRxxx/ 012586728</a>
+					</li>
+					<li>
+						<a href="#ismale">د.فتحي الجراي
+						<br />
+						FR096/ 012581029</a>
+					</li>
+					<li>
+						<a href="#ismale">د.عادل بن الحبيب عمار
+						<br />
+						ahammar@imamu.edu.sa <br /> SR061/ 012586713</a>
+					</li>
+					<li>
+						<a href="#ismale">د.محمد بن أحمد بن عون الله
+						<br />
+						FRxxx/ 012586708</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.حبيب محمد فله
+						<br />
+						hvvulla@imamu.edu.sa <br /> FR126/ 012567125</a>
+					</li>
+					<li>
+						<a href="#ismale">أ.مراد بوزقرة
+						<br />
+						mmsbouzegza@imamu.edu.sa <br /> FR054/ 012581910</a>
+					</li>
+					<li>
+						<a href="#ismale">أكمران إقبال
+						<br />
+						kamraniqbal@ccis.imamu.edu.sa <br /> FRxxx/01258xxxx</a>
+					</li>
+				</ul>
 
 			</div>
 
@@ -478,22 +394,14 @@
 
 			</header>
 			<div data-role="content">
+				<ul data-role="listview" data-filter="true">
+					<li>
+						<a href="#ismale">أ.منيرة الشبل
+						<br />
+						l.shebel@yahoo.com </a>
+					</li>
+				</ul>
 
-				<table border ="1" width="100%" style="text-align: center;">
-
-					<thead>
-						<th>Name</th>
-						<th>Office number/phone</th>
-						<th>Email</th>
-					</thead>
-
-					<tr>
-						<td>أ.منيرة الشبل</td>
-						<td></td>
-						<td>l.shebel@yahoo.com</td>
-					</tr>
-
-				</table>
 			</div>
 
 		</div>

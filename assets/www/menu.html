@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>IMAMU</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone-no">
+		<meta name="viewport" content="user-scalable=no, initial-scale=0.75, maximum-scale=1, minimum-scale=0.75, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+		<!--<link rel="stylesheet" href="rtl.jquery.mobile-1.3.0.min.css" />-->
+		<link rel="stylesheet"  href="css/jquery.mobile-1.3.2.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<!--<script src="rtl.jquery.mobile-1.3.0.min.js"></script>-->
+		<script src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/push.js"></script>
+		<script type="text/javascript" src="js/googleapi.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/map.js"></script>
+		<script>
+			document.addEventListener("deviceready", onDeviceReady, false);
+		</script>
+		<style>
+			#home {
+				background-image: url('images/bg.jpg');
+				background-repeat: no-repeat;
+			}
+		</style>
+		<style>
+			.iconfontstyle {
+				color: #323232;
+				font-family: Consolas;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="home" data-role="page">
+
+			<!--	<div id="app-status-div">
+			<ul id="app-status-ul">
+			<li>
+			Cordova PushNotification Plugin Demo
+			</li>
+			</ul>
+			</div>-->
+			<header data-role="header">
+				<h1>Main Menu</h1>
+
+			</header>
+
+			<div data-role="content">
+				<ul data-role="listview">
+					<li>
+						<a href="#news" class="linktag" onclick="view_news();"><img src="icons/news.png"  /> News</a>
+					</li>
+					<li>
+						<a href="#ads" onclick="view_ads();" class="linktag"><img src="icons/ads.png"  /> Ads</a>
+					</li>
+					<li>
+						<a rel="external" href="map.html"   class="linktag"><img src="icons/map.png" /> Map</a>
+					</li>
+					<li>
+						<a href="calendar.html" rel="external"  class="linktag"><img src="icons/cal.png"  /> Academic Calendar</a>
+					</li>
+					<li>
+						<a href="#links" class="linktag"><img src="icons/links.png" width="60" /> Importent Links</a>
+					</li>
+					<li>
+						<a href="guide.html" rel="external" class="linktag"><img src="icons/guide.ico" /> Directory</a>
+					</li>
+					<li>
+						<a rel="external" href="services.html" class="linktag"><img src="icons/service.gif" /> Services</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<div id="news" data-role="page">
+			<header data-role="header">
+				<h1>News</h1>
+				<a href="#home" data-icon="back" >Back</a>
+
+			</header>
+			<div data-role="content">
+				<ul data-role="listview"   data-filter="true" id='allnews'></ul>
+			</div>
+
+		</div>
+
+		<div id="newsdesc" data-role="page">
+			<header data-role="header">
+				<h1>News</h1>
+				<a href="#news" data-icon="back" >Back</a>
+
+			</header>
+			<div data-role="content">
+				<p id="description">
+
+				</p>
+			</div>
+		</div>
+
+		<div id="ads" data-role="page">
+			<header data-role="header">
+				<h1>Ads</h1>
+				<a href="#home" data-icon="back">Back</a>
+
+			</header>
+			<div data-role="content">
+				<ul data-role="listview"   data-filter="true" id='allads'></ul>
+			</div>
+
+		</div>
+
+		<div id="adsdesc" data-role="page">
+			<header data-role="header">
+				<h1>Ads</h1>
+				<a href="#ads" data-icon="back" >Back</a>
+
+			</header>
+			<div data-role="content">
+				<p id="ads_desc" dir="rtl">
+
+				</p>
+			</div>
+		</div>
+
+		<div id="links" data-role="page">
+			<header data-role="header">
+				<h1>Links</h1>
+				<a href="#home" data-icon="back" >Back</a>
+
+			</header>
+			<div data-role="content" style="text-align: center;margin-top: 200px;">
+				<table style="text-align: center;" width="100%">
+					<tr>
+						<td><a href="https://imamu.blackboard.com" class="linktag"><b style="color: black;">Black Board Learn</b></a>
+						<br />
+						<br />
+						<br />
+						</td><td><img src="images/black.jpg" width="150" /></td>
+					</tr>
+					<tr>
+						<td><a href="http://iussb.imamu.edu.sa:7750/PROD_ar/twbkwbis.P_WWWLogin" class="linktag"><b style="color: black;">Self-Services</b></a>
+						<br />
+						<br />
+						<br />
+						</td><td><img src="images/self.jpg" width="150" /></td>
+					</tr>
+					<tr>
+						<td><a href="http://www.imam1.net/vb/forumdisplay.php?f=20&s=78d411437c86dd17540940c96f8b9fb9" class="linktag"><b style="color: black;">Student Forum</b></a>
+						<br />
+						<br />
+						<br />
+						</td><td><img src="images/forum.png" width="150" /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div data-role="page" id="show" class="page-map">
+			<div data-role="header" id="thehead" data-nobackbtn="true">
+				<h1>University Road</h1>
+				<a href="#home" data-icon="back" >Back</a>
+			</div>
+			<div data-role="content" id="the_map_container" style="padding:0">
+				<div id="map_canvas" style="width:100%; height:100%;"></div>
+			</div>
+		</div>
+
+	</body>
+</html>
+<style>
+</style>
